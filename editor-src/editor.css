@@ -60,7 +60,7 @@ body {
   display: flex;
   align-items: center;
   gap: 2px;
-  padding: 6px 8px;
+  padding: 6px 10px;
   overflow-x: auto;
   overflow-y: hidden;
   scrollbar-width: none;
@@ -77,6 +77,12 @@ body {
   background: var(--sunken);
   gap: 4px;
 }
+/* The toolbar scrolls sideways: fade its right edge so the hidden buttons read as more to come. */
+.bar {
+  padding-right: 28px;
+  -webkit-mask-image: linear-gradient(to right, #000 calc(100% - 28px), transparent);
+  mask-image: linear-gradient(to right, #000 calc(100% - 28px), transparent);
+}
 
 .sep {
   width: 1px;
@@ -92,11 +98,11 @@ body {
   align-items: center;
   justify-content: center;
   gap: 4px;
-  min-width: 40px;
-  height: 40px;
+  min-width: 38px;
+  height: 38px;
   padding: 0 8px;
   border: 0;
-  border-radius: 8px;
+  border-radius: 10px;
   background: transparent;
   color: var(--fg2);
   font: inherit;
@@ -110,6 +116,9 @@ body {
 .btn.is-active {
   background: color-mix(in srgb, var(--accent) 14%, transparent);
   color: var(--accent);
+}
+.btn.is-active:active {
+  background: color-mix(in srgb, var(--accent) 22%, transparent);
 }
 .btn:disabled {
   color: var(--faint);
@@ -239,7 +248,12 @@ body {
 }
 .page {
   min-height: 100%;
-  padding: 16px 16px 48px;
+  padding: 24px 20px 96px;
+}
+/* A readable measure on a tablet or desktop; a phone uses its whole width. */
+.page .ProseMirror {
+  max-width: 720px;
+  margin: 0 auto;
 }
 .page .ProseMirror {
   min-height: 100%;
@@ -253,7 +267,7 @@ body {
 
 .foot {
   flex: none;
-  padding: 6px 16px calc(6px + env(safe-area-inset-bottom, 0px));
+  padding: 8px 20px calc(8px + env(safe-area-inset-bottom, 0px));
   border-top: 1px solid var(--line);
   color: var(--muted);
   font-size: 12px;
@@ -266,10 +280,10 @@ body {
 /* ---- Content: the post as it is read, from web-v2 -------------------------------------------------- */
 
 .rich-editor-content {
-  line-height: 1.75;
+  line-height: 1.7;
   color: var(--fg2);
   caret-color: var(--accent);
-  font-size: 16px;
+  font-size: 17px;
 }
 .rich-editor-content > * + * {
   margin-top: 0.875em;
@@ -333,8 +347,9 @@ body {
   margin-right: 0;
   padding-left: 1em;
   border-left: 3px solid var(--accent);
+  border-radius: 2px;
   font-style: italic;
-  color: var(--fg2);
+  color: var(--ink);
 }
 .rich-editor-content code {
   padding: 0.1em 0.35em;
