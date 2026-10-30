@@ -1,0 +1,19 @@
+{
+  "schemaVersion": 1,
+  "nativeContract": 2,
+  "name": "rich-editor",
+  "native": "RichEditor",
+  "ios": {
+    "classes": [
+      "RichEditorModule"
+    ]
+  },
+  "android": {
+    "namespace": "dev.pyxpo.modules.richeditor",
+    "classes": [
+      "dev.pyxpo.modules.richeditor.RichEditorModule"
+    ],
+    "minSdk": 24,
+    "dependencies": []
+  }
+}
